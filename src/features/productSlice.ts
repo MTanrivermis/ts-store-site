@@ -9,8 +9,6 @@ export interface Products {
 }
 
 
-
-
 // Define a type for the slice state
 interface ProductsState {
   loading: boolean;
