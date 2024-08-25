@@ -6,20 +6,21 @@ import { Product, VoidFunc } from "../models/models";
 
 const FavoritesPage = ({}) => {
   const { favorites } = useAppSelector((state) => state.products);
-  const dispatch =useAppDispatch();
-
-
-
+  const dispatch = useAppDispatch();
 
   const handleRemove: VoidFunc = (product) => {
-    const newData:Product[] = favorites.filter(item => item.id !== product.id);
+    const newData: Product[] = favorites.filter(
+      (item) => item.id !== product.id
+    );
     dispatch(removeFavorites(newData));
-    toastSuccessNotify("Product removed..")
+    toastSuccessNotify("Product removed..");
   };
 
   return (
     <div>
-      Favorites Page
+      <h1 className="font-bold-text-2xl text-white text-center m-3">
+        My Favorites Page
+      </h1>
       <div className="flex justify-center items-center flex-wrap gap-5 p-5">
         {favorites.map((item) => (
           <Card
@@ -29,8 +30,8 @@ const FavoritesPage = ({}) => {
             handleFunc={handleRemove}
           />
         ))}
-        {favorites.length && (
-          <h3 className="font-bold- text-2xl text-white text-centerm-3">
+        {favorites.length === 0 && (
+          <h3 className="font-bold- text-2xl text-red-500 text-center mt-52">
             No favorites...
           </h3>
         )}
@@ -40,7 +41,9 @@ const FavoritesPage = ({}) => {
 };
 
 export default FavoritesPage;
-function dispatch(arg0: { payload: import("../models/models").Product[]; type: "products/removeFavorites"; }) {
+function dispatch(arg0: {
+  payload: import("../models/models").Product[];
+  type: "products/removeFavorites";
+}) {
   throw new Error("Function not implemented.");
 }
-
