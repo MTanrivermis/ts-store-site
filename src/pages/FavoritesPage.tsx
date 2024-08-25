@@ -29,6 +29,11 @@ const FavoritesPage = ({}) => {
             handleFunc={handleRemove}
           />
         ))}
+        {favorites.length && (
+          <h3 className="font-bold- text-2xl text-white text-centerm-3">
+            No favorites...
+          </h3>
+        )}
       </div>
     </div>
   );
